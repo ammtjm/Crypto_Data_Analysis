@@ -18,7 +18,7 @@ def get_funding_rates():
     sorted_rates = sorted(positive_rates, key=lambda x: float(x["fundingRate"]), reverse=True)
 
     df = pd.DataFrame(sorted_rates)
-    df['fundingRateTimestamp'] = pd.to_datetime(df['fundingRateTimestamp'], unit='ms')
+    df['fundingRateTimestamp'] = pd.to_datetime(df['fundingRateTimestamp'].astype(int), unit='ms')
 
     return df
 
